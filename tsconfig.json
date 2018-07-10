@@ -17,16 +17,16 @@
       "dom"
     ],
     "paths": {
-      "auth": [
+      "@medisphere/auth": [
         "dist/auth"
       ],
-      "auth/*": [
+      "@medisphere/auth/*": [
         "dist/auth/*"
       ],
-      "core": [
+      "@medisphere/core": [
         "dist/core"
       ],
-      "core/*": [
+      "@medisphere/core/*": [
         "dist/core/*"
       ]
     }

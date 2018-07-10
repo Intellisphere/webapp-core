@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { AuthService } from "@medisphere/core";
 
 @Injectable()
-export class JwtAuthService {
+export class JwtAuthService extends AuthService{
 
   private token : string;
 
-  constructor() { }
+  constructor() {
+    super();
+  }
 
   public isAuthenticated(): boolean{
     const token = localStorage.getItem('authToken');
