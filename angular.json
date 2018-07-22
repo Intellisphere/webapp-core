@@ -126,7 +126,7 @@
       "root": "projects/auth",
       "sourceRoot": "projects/auth/src",
       "projectType": "library",
-      "prefix": "lib",
+      "prefix": "sphr-auth",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
@@ -166,7 +166,7 @@
       "root": "projects/core",
       "sourceRoot": "projects/core/src",
       "projectType": "library",
-      "prefix": "lib",
+      "prefix": "sphr",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
@@ -194,6 +194,126 @@
             "tsConfig": [
               "projects/core/tsconfig.lib.json",
               "projects/core/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "base": {
+      "root": "projects/base",
+      "sourceRoot": "projects/base/src",
+      "projectType": "library",
+      "prefix": "sphr-base",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/base/tsconfig.lib.json",
+            "project": "projects/base/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/base/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/base/src/test.ts",
+            "tsConfig": "projects/base/tsconfig.spec.json",
+            "karmaConfig": "projects/base/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/base/tsconfig.lib.json",
+              "projects/base/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ui-core": {
+      "root": "projects/ui-core",
+      "sourceRoot": "projects/ui-core/src",
+      "projectType": "library",
+      "prefix": "sphr",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ui-core/tsconfig.lib.json",
+            "project": "projects/ui-core/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/ui-core/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ui-core/src/test.ts",
+            "tsConfig": "projects/ui-core/tsconfig.spec.json",
+            "karmaConfig": "projects/ui-core/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ui-core/tsconfig.lib.json",
+              "projects/ui-core/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "users": {
+      "root": "projects/users",
+      "sourceRoot": "projects/users/src",
+      "projectType": "library",
+      "prefix": "sphr-usr",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/users/tsconfig.lib.json",
+            "project": "projects/users/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/users/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/users/src/test.ts",
+            "tsConfig": "projects/users/tsconfig.spec.json",
+            "karmaConfig": "projects/users/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/users/tsconfig.lib.json",
+              "projects/users/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

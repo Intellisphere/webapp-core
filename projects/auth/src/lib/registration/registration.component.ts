@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'auth-registration',
+  selector: 'sphr-auth-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss']
 })

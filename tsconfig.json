@@ -28,6 +28,24 @@
       ],
       "@medisphere/core/*": [
         "dist/core/*"
+      ],
+      "@medisphere/base": [
+        "dist/base"
+      ],
+      "@medisphere/base/*": [
+        "dist/base/*"
+      ],
+      "@medisphere/ui-core": [
+        "dist/ui-core"
+      ],
+      "@medisphere/ui-core/*": [
+        "dist/ui-core/*"
+      ],
+      "@medisphere/users": [
+        "dist/users"
+      ],
+      "@medisphere/users/*": [
+        "dist/users/*"
       ]
     }
   }
