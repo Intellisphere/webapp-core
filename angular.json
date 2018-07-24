@@ -321,6 +321,46 @@
           }
         }
       }
+    },
+    "material-ui-core": {
+      "root": "projects/material-ui-core",
+      "sourceRoot": "projects/material-ui-core/src",
+      "projectType": "library",
+      "prefix": "sphr",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/material-ui-core/tsconfig.lib.json",
+            "project": "projects/material-ui-core/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/material-ui-core/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/material-ui-core/src/test.ts",
+            "tsConfig": "projects/material-ui-core/tsconfig.spec.json",
+            "karmaConfig": "projects/material-ui-core/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/material-ui-core/tsconfig.lib.json",
+              "projects/material-ui-core/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "web-app",

@@ -10,7 +10,7 @@ import { LogIn } from './login';
 })
 export class LogInService {
 
-  constructor(private http : HttpClient, ,private authService: AuthService) { }
+  constructor(private http : HttpClient, private authService: AuthService) { }
 
   logIn(data : LogIn){
     const body = JSON.stringify(data);

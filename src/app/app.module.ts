@@ -14,7 +14,7 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     RoutingModule,
-    AuthModule.forRoot()
+    AuthModule.forRoot({ whiltelistedDomains: [], blacklistedRoutes: [] }),
   ],
   providers: [],
   bootstrap: [AppComponent]
