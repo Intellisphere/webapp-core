@@ -5,7 +5,12 @@ import { AuthModule } from "@medisphere/auth";
 
 import { RoutingModule } from './app.routes'
 import { AppComponent } from './app.component';
+import { APP_CONFIG_TOKEN, AppConfig } from '@medisphere/core';
 
+const APP_CONFIG : AppConfig = {
+  apiEndpoint: "localhost:3000",
+  title: "Some Title"
+}
 
 @NgModule({
   declarations: [
@@ -16,7 +21,9 @@ import { AppComponent } from './app.component';
     RoutingModule,
     AuthModule.forRoot({ whiltelistedDomains: [], blacklistedRoutes: [] }),
   ],
-  providers: [],
+  providers: [
+    {provide: APP_CONFIG_TOKEN, useValue: APP_CONFIG}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,6 +5,15 @@
 @import './variables';
 @import './mixins';
 
+
+html, body{
+  height: 100%;
+}
+
+body {
+  margin: 0px;
+}
+
 .clearfix {
   overflow: auto;
 }

@@ -1,26 +1,28 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import {JWT_OPTIONS, JwtModule} from '@auth0/angular-jwt';
-import { JwtAuthService } from "./jwt-auth.service";
-import { JwtAuthOptions } from "./jwt-auth.options";
+import { JWT_OPTIONS, JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+import { JwtAuthService } from "./jwt-auth/jwt-auth.service";
+import { JwtAuthOptions } from "./jwt-auth/jwt-auth.options";
 import { AuthRoutingModule } from './auth-routing.module';
-import { LoginModule } from './login/login.module';
-import { RegistrationComponent } from "./registration/registration.component";
-
-export function tokenGetter() {
-  return localStorage.getItem('access_token');
-}
+import { LogInModule } from './login/login.module';
+import { RegistrationComponent } from './registration/registration.component';
+import { getAccessToken } from './jwt-auth/jwt-auth.token';
+import { AuthService } from '@medisphere/core';
 
 @NgModule({
   imports: [
-    LoginModule,
+    LogInModule,
     AuthRoutingModule,
 
     JwtModule
   ],
   declarations: [RegistrationComponent
   ],
+  providers: [
+    JwtHelperService,
+    { provide: AuthService, useClass: JwtAuthService }
+  ],
   exports: [
-    LoginModule
+    LogInModule
   ]
 })
 
@@ -28,10 +30,10 @@ export class AuthModule {
   static forRoot(options: JwtAuthOptions): ModuleWithProviders{
     return {
       ngModule: AuthModule,
-      providers: [JwtAuthService,
+      providers: [
         { provide: JWT_OPTIONS, useValue:{
           config: {
-            tokenGetter: tokenGetter,
+            tokenGetter: getAccessToken(),
             whitelistedDomains: options.whiltelistedDomains,
             blacklistedRoutes: options.blacklistedRoutes
           }
