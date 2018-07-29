@@ -9,6 +9,8 @@ import {
   MatTooltipModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { ForbiddenComponent } from './pages/forbidden/forbidden.component';
 
 @NgModule({
   imports: [
@@ -39,7 +41,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatToolbarModule,
     MatTooltipModule
   ],
-  declarations: [],
+  declarations: [NotFoundComponent, ForbiddenComponent],
   exports: [
     FormsModule,
     ReactiveFormsModule,

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { LogIn } from '../models/login';
-import { AuthService } from "@medisphere/core";
+import { AuthenticationService } from "@medisphere/core";
 import { LogInService } from "../serivces/login.service";
 
 @Component({
@@ -24,7 +24,7 @@ export class LogInComponent implements OnInit {
   });
 
 
-  constructor(private authService: AuthService, private logInService: LogInService) {
+  constructor(private authService: AuthenticationService, private logInService: LogInService) {
   }
 
   ngOnInit() {

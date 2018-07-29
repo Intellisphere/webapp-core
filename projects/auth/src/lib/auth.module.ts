@@ -1,12 +1,12 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { JWT_OPTIONS, JwtHelperService, JwtModule } from '@auth0/angular-jwt';
-import { JwtAuthService } from "./jwt-auth/jwt-auth.service";
-import { JwtAuthOptions } from "./jwt-auth/jwt-auth.options";
+import { JwtAuthenticationService } from "./services/jwt-authentication/jwt-authentication.service";
+import { JwtAuthenticationOptions } from "./services/jwt-authentication/jwt-authentication.options";
 import { AuthRoutingModule } from './auth-routing.module';
-import { LogInModule } from './login/login.module';
-import { RegistrationComponent } from './registration/registration.component';
-import { getAccessToken } from './jwt-auth/jwt-auth.token';
-import { AuthService } from '@medisphere/core';
+import { LogInModule } from './pages/login/login.module';
+import { RegistrationComponent } from './pages/registration/registration.component';
+import { getJWT } from './services/jwt-authentication/jwt-authentication.token';
+import { AuthenticationService } from '@medisphere/core';
 
 @NgModule({
   imports: [
@@ -15,11 +15,10 @@ import { AuthService } from '@medisphere/core';
 
     JwtModule
   ],
-  declarations: [RegistrationComponent
+  declarations: [
+    RegistrationComponent
   ],
   providers: [
-    JwtHelperService,
-    { provide: AuthService, useClass: JwtAuthService }
   ],
   exports: [
     LogInModule
@@ -27,13 +26,15 @@ import { AuthService } from '@medisphere/core';
 })
 
 export class AuthModule {
-  static forRoot(options: JwtAuthOptions): ModuleWithProviders{
+  static forRoot(options: JwtAuthenticationOptions): ModuleWithProviders{
     return {
       ngModule: AuthModule,
       providers: [
+        JwtHelperService,
+        { provide: AuthenticationService, useClass: JwtAuthenticationService },
         { provide: JWT_OPTIONS, useValue:{
           config: {
-            tokenGetter: getAccessToken(),
+            tokenGetter: getJWT(),
             whitelistedDomains: options.whiltelistedDomains,
             blacklistedRoutes: options.blacklistedRoutes
           }

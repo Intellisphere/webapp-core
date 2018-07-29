@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { AuthService } from '@medisphere/core';
+import { AuthenticationService } from '@medisphere/core';
 
 
 @Injectable()
-export class JwtAuthService extends AuthService{
+export class JwtAuthenticationService extends AuthenticationService{
 
   constructor(private jwtHelper : JwtHelperService) {
     super();
