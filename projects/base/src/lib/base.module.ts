@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
-import { ProgramComponent } from './pages/programs/components/program.component';
-import {ProgramsModule} from "./pages/programs/programs.module";
+import { ProgramsModule } from "./pages/programs/programs.module";
+import { BaseRoutingModule } from './base-routing.module';
 
 @NgModule({
   imports: [
-    ProgramsModule
+    ProgramsModule,
+    BaseRoutingModule
   ],
   declarations: [],
   exports: [

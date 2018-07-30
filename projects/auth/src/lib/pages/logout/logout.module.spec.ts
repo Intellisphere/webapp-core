@@ -1,10 +1,10 @@
-import { LogoutModule } from './logout.module';
+import { LogOutModule } from './logout.module';
 
-describe('LogoutModule', () => {
-  let logoutModule: LogoutModule;
+describe('LogOutModule', () => {
+  let logoutModule: LogOutModule;
 
   beforeEach(() => {
-    logoutModule = new LogoutModule();
+    logoutModule = new LogOutModule();
   });
 
   it('should create an instance', () => {

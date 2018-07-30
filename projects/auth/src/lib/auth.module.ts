@@ -4,13 +4,15 @@ import { JwtAuthenticationService } from "./services/jwt-authentication/jwt-auth
 import { JwtAuthenticationOptions } from "./services/jwt-authentication/jwt-authentication.options";
 import { AuthRoutingModule } from './auth-routing.module';
 import { LogInModule } from './pages/login/login.module';
+import { LogOutModule } from "./pages/logout/logout.module";
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { getJWT } from './services/jwt-authentication/jwt-authentication.token';
-import { AuthenticationService } from '@medisphere/core';
+import { AuthenticationService, AuthorizationService } from '@medisphere/core';
 
 @NgModule({
   imports: [
     LogInModule,
+    LogOutModule,
     AuthRoutingModule,
 
     JwtModule
@@ -21,7 +23,8 @@ import { AuthenticationService } from '@medisphere/core';
   providers: [
   ],
   exports: [
-    LogInModule
+    LogInModule,
+    LogOutModule
   ]
 })
 
@@ -32,6 +35,7 @@ export class AuthModule {
       providers: [
         JwtHelperService,
         { provide: AuthenticationService, useClass: JwtAuthenticationService },
+        AuthorizationService, //TODO: Implement AuthService
         { provide: JWT_OPTIONS, useValue:{
           config: {
             tokenGetter: getJWT(),
